@@ -2,8 +2,13 @@ package edu.insightr.gildedrose;
 
 public class Inventory {
 
+
+
     private Item[] items;
 
+    public Item[] getItems() {
+        return items;
+    }
     public Inventory(Item[] items) {
         super();
         this.items = items;
@@ -31,13 +36,30 @@ public class Inventory {
         System.out.println("\n");
     }
 
+
+
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             if (items[i].getName() != "Aged Brie"
                     && items[i].getName() != "Backstage passes to a TAFKAL80ETC concert") {
                 if (items[i].getQuality() > 0) {
                     if (items[i].getName() != "Sulfuras, Hand of Ragnaros") {
-                        items[i].setQuality(items[i].getQuality() - 1);
+                        //Ajout de la modification Conjured
+
+
+
+
+
+                        if (items[i].getName().contains("Conjured")&& items[i].getQuality()>1){
+                            items[i].setQuality(items[i].getQuality() - 2);
+                        }
+                        else{
+                            items[i].setQuality(items[i].getQuality() - 1);
+                        }
+
+
+
+
                     }
                 }
             } else {
@@ -69,7 +91,13 @@ public class Inventory {
                     if (items[i].getName() != "Backstage passes to a TAFKAL80ETC concert") {
                         if (items[i].getQuality() > 0) {
                             if (items[i].getName() != "Sulfuras, Hand of Ragnaros") {
-                                items[i].setQuality(items[i].getQuality() - 1);
+                                //modification
+                                if (items[i].getName().contains("Conjured")&& items[i].getQuality()>1){
+                                    items[i].setQuality(items[i].getQuality() - 2);
+                                }
+                                else{
+                                    items[i].setQuality(items[i].getQuality() - 1);
+                                }
                             }
                         }
                     } else {
@@ -83,12 +111,21 @@ public class Inventory {
             }
         }
     }
+   /* Visitor myVisitor = new Visitor();
+    public void superUpdate(){
+        for(Item item : items) {
+            item.accept(myVisitor);
+        }
+    }*/
 
     public static void main(String[] args) {
         Inventory inventory = new Inventory();
-        for (int i = 0; i < 10; i++) {
+        //for (int i = 0; i < 10; i++) {
+        System.out.println("Conjured Mana Cake".substring(0,8));
+
             inventory.updateQuality();
             inventory.printInventory();
+        //}
         }
     }
-}
+
