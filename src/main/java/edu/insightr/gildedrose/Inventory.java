@@ -117,6 +117,7 @@ public class Inventory {
             item.accept(myVisitor);
         }
     }*/
+   public void ONTESTUNTRUC(){}
 
     public static void main(String[] args) {
         Inventory inventory = new Inventory();
